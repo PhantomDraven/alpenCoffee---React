@@ -1,0 +1,35 @@
+/* Texts */
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+
+/* Margins */
+.margin-top {
+    margin-top: 25px;
+}
+.margin-right {
+    margin-right: 25px;
+}
+.margin-bottom {
+    margin-bottom: 25px;
+}
+.margin-left {
+    margin-left: 25px;
+}
+
+/* Paddings */
+.padding-top {
+    padding-top: 25px;
+}
+.padding-right {
+    padding-right: 25px;
+}
+.padding-bottom {
+    padding-bottom: 25px;
+}
+.padding-left {
+    padding-left: 25px;
+}
