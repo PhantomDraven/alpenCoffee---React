@@ -33,3 +33,11 @@
 .padding-left {
     padding-left: 25px;
 }
+
+/* Base structure */
+#root {
+    display: grid;
+    left: 0;
+    margin: auto;
+    position: relative;
+}

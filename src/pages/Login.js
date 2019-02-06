@@ -1,34 +1,23 @@
 import React, { Component } from 'react';
 
-import { withRouter } from 'react-router-dom';
-
-import App from '../App';
 import { withAppContext } from '../Context';
 
 import LoginForm from '../components/LoginForm';
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            isAuth: false
-        }
+class Login extends Component {    
+    componentWillMount() {
+        document.title = this.props.title;
     }
 
-    userDidLogin = () => {
-        this.setState({isAuth: !isAuth});
-    } 
-
     render() {
-        const { isAuth } = this.state;
+        const { userDidLogin } = this.props;
         return (
-            <App title="AlpenCoffee - Login" isAuth={isAuth}>
-                <h1 className="text-center margin-top">alpenCoffee</h1>
-                <LoginForm userDidLogin={this.userDidLogin}/>
-            </App>
+            <React.Fragment>
+                <h1 className="text-center margin-top">{/* alpenCoffee */}Things</h1>
+                <LoginForm userDidLogin={userDidLogin}/>
+            </React.Fragment>
         );
     }
 }
 
-export default withRouter(withAppContext(Login));
+export default withAppContext(Login);

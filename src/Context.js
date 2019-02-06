@@ -1,10 +1,8 @@
 import React    from 'react';
 
 const DEFAULT_VALUES = {
+    isAuth: false,
     pocket: 0,
-    updateUserStatus: () => {
-        this.logged = !this.logged;
-    },
     drink: (context) => {
         const savePocket = this.pocket;
         this.pocket = savePocket - 0.2;

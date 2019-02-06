@@ -6,21 +6,13 @@ import "./style.css";
 
 // import * as serviceWorker from './serviceWorker';
 
-import { BrowserRouter, Route } from 'react-router-dom';
-
 import AppContext, { DEFAULT_VALUES } from './Context';
 
-import Login    from './pages/Login';
-import Home    from './pages/Home';
+import App from './App';
 
 ReactDOM.render(
     <AppContext.Provider value={DEFAULT_VALUES}>
-        <BrowserRouter>
-            <React.Fragment>
-                <Route exact path="/" component={Home}/>
-                <Route path="/login" component={Login}/>
-            </React.Fragment>
-        </BrowserRouter>    
+        <App/>
     </AppContext.Provider>
     , document.getElementById('root')
 );

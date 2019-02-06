@@ -1,44 +1,47 @@
 import React, { Component } from 'react';
 
-import { withRouter } from 'react-router-dom';
-import { withAppContext } from './Context';
+import AppContext, { DEFAULT_VALUES } from './Context';
+
+import { BrowserRouter } from 'react-router-dom';
+
+import Http from './components/Http';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isAuth: this.props.isAuth
+            ...DEFAULT_VALUES,
+            appName: "AlpenCoffee",
+            separator: " - "
         };
+
+        this.userDidLogin = this.userDidLogin.bind(this);
     }
 
-    componentWillMount() {
-        document.title = this.props.title;
-    }
-
-    componentDidMount() {
-
-    }
-    
-    componentWillUpdate() {
-        if (this.props.app.logged) {
-            this.props.history.push('/');
-        } else {
-            this.props.history.push('/login');
-        }
+    userDidLogin = () => {
+        this.setState({isAuth: !this.state.isAuth}, () => {
+            console.log(this.state);
+        });
     }
     
     render() {
+        const { appName, isAuth, separator } = this.state;
+        const appCompleteName = appName + separator;
         return (
-        <div className="main-wrapper">
-            <header className="header">
-            </header>
-            <main className="main">
-                {this.props.children}
-            </main>
-        </div>
+            <AppContext.Provider value={this.state}>
+                <div className="main-wrapper">
+                    <header className="header">
+                    </header>
+                    <main className="main">
+                        <BrowserRouter>
+                            <Http auth={isAuth} appName={appCompleteName} userDidLogin={this.userDidLogin}/>   
+                        </BrowserRouter>
+                    </main>
+                </div>
+            </AppContext.Provider>
         );
     }
 }
 
-export default withRouter(withAppContext(App));
+export default App;
